@@ -7,11 +7,21 @@
     </ion-row>
   </ion-grid>
   <app-slideshow-backdrop [movies]="moviesRecientes"></app-slideshow-backdrop>
-  <!-- <ion-slides [options] ="slideOpts">
-    <ion-slide *ngFor="let movie of moviesRecientes">
-       <ion-card>
-       <img [src]="movie.backdrop_path | imagen"/>
-       </ion-card>
-    </ion-slide>
-  </ion-slides> -->
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>
+        <h3> Billboard</h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <app-slideshow-poster [movies]="moviesRecientes"></app-slideshow-poster>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>
+        <h3>Popular Movies</h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <app-slideshow-pares [movies]="moviesPopular"
+                        (cargarMas)="cargarMas()"></app-slideshow-pares>
 </ion-content>

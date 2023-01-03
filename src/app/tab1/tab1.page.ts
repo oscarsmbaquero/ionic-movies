@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class Tab1Page implements OnInit {
 
   moviesRecientes: Pelicula[] = [];
+  moviesPopular: Pelicula[] =[];
 
   constructor( private moviesService:MoviesService) {
 
@@ -22,6 +23,20 @@ export class Tab1Page implements OnInit {
       //console.log('Resp', resp);
       this.moviesRecientes =  resp.results;
     } );
+    this.getPopulares();
+   
+  }
+
+  getPopulares(){   
+    this.moviesService.getPopular()
+    .subscribe( res => {
+
+      const arrTemp = [...this.moviesPopular,...res.results]
+      this.moviesPopular= arrTemp;
+    })
+  }
+  cargarMas() {
+   this.getPopulares();
   }
 
 }

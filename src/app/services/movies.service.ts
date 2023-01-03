@@ -11,6 +11,8 @@ const apiKey = environment.apiKey;
 })
 export class MoviesService {
 
+  private popularesPage = 0;
+
   constructor( private http: HttpClient) { }
 
   private executeQuery<T>(query: string ){
@@ -41,6 +43,15 @@ export class MoviesService {
     const fin    = `${ hoy.getFullYear() }-${ mesString }-${ ultimoDia }`;
 
     return this.executeQuery<RespuestaMDB>(`/discover/movie?primary_release_date.gte=${ inicio }&primary_release_date.lte=${ fin }`);
-    //return this.http.get<RespuestaMDB>('https://api.themoviedb.org/3/discover/movie?primary_release_date.gte=2019-09-15&primary_release_date.lte=2023-01-02&api_key=da7e623feff33450d3a2b723948b25aa&language=es&include_image_language=es')
+    
+  }
+
+  getPopular(){
+    this.popularesPage++;
+
+    const query =`/discover/movie?sort_by=popularity.desc&page=${this.popularesPage}`;
+
+    return this.executeQuery<RespuestaMDB>(query)
+
   }
 }

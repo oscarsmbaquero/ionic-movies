@@ -8,6 +8,7 @@ import { Pelicula } from '../../interfaces/interfaces';
 })
 export class SlideshowBackdropComponent implements OnInit {
   @Input() movies: Pelicula[] = [];
+  
   slideOpts = {
     slidesPerView: 1.1,
     freeMode: true,
