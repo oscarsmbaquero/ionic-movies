@@ -1,3 +1,5 @@
+import { ComponentsModule } from './../components/components.module';
+import { SlideshowBackdropComponent } from './../components/slideshow-backdrop/slideshow-backdrop.component';
 import { PipesModule } from './../pipes/pipes.module';
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
@@ -15,7 +17,8 @@ import { Tab1PageRoutingModule } from './tab1-routing.module';
     FormsModule,
     ExploreContainerComponentModule,
     Tab1PageRoutingModule,
-    PipesModule
+    PipesModule,
+    ComponentsModule,
   ],
   declarations: [Tab1Page]
 })

@@ -12,10 +12,6 @@ import { Component, OnInit } from '@angular/core';
 export class Tab1Page implements OnInit {
 
   moviesRecientes: Pelicula[] = [];
-  slideOpts = {
-   slidesPerView : 1.1,
-   freeMode: true,
-  };
 
   constructor( private moviesService:MoviesService) {
 
