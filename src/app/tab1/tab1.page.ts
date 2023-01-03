@@ -3,6 +3,7 @@ import { MoviesService } from './../services/movies.service';
 import { Component, OnInit } from '@angular/core';
 
 
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -22,7 +23,7 @@ export class Tab1Page implements OnInit {
   ngOnInit() {
     this.moviesService.getCartelera()
     .subscribe( resp => {
-      console.log('Resp', resp);
+      //console.log('Resp', resp);
       this.moviesRecientes =  resp.results;
     } );
   }
