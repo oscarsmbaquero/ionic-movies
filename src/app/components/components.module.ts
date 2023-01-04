@@ -5,20 +5,25 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SlideshowPosterComponent } from './slideshow-poster/slideshow-poster.component';
 import { SlideshowPAresComponent } from './slideshow-pares/slideshow-pares.component';
-
+import { DetailComponent } from './detail/detail.component';
 
 
 
 @NgModule({
+  entryComponents:[
+    DetailComponent
+  ],
   declarations: [
     SlideshowBackdropComponent,
     SlideshowPosterComponent,
     SlideshowPAresComponent,
+    DetailComponent
   ],
   exports: [
     SlideshowBackdropComponent,
     SlideshowPosterComponent,
-    SlideshowPAresComponent
+    SlideshowPAresComponent,
+    DetailComponent
   ],
   imports: [
     CommonModule,
