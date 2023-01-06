@@ -66,4 +66,6 @@ export class MoviesService {
   getArtistMovie( id: string ) {
     return this.executeQuery<RespuestaCredits>(`/movie/${ id }/credits?a=1`);
   }
+
+  
 }

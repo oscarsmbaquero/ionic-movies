@@ -28,7 +28,10 @@ export class DetailComponent implements OnInit {
                private dataLocal:DataLocalService,
     ) { }
 
-  ngOnInit() {
+    ngOnInit() {
+
+    const existe = this.dataLocal.existePelicula( this.id )
+    .then( existe => this.estrella = ( existe ) ? 'star' : 'star-outline' );
 
     this.moviesService.getMoviedetail( this.id )
     .subscribe( resp => {
@@ -45,8 +48,8 @@ export class DetailComponent implements OnInit {
     this.modalCtrl.dismiss();
   }
   favorito() {
-      this.dataLocal.saveFilm( this.movie );
-     //this.estrella = ( existe ) ? 'star' : 'star-outline';
+      const existe =this.dataLocal.saveFilm( this.movie );
+      this.estrella = ( existe ) ? 'star' : 'star-outline';
   }
 
 }
