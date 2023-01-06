@@ -1,6 +1,8 @@
+import { Cast } from './../../interfaces/interfaces';
 import { MoviesService } from './../../services/movies.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { PeliculaDetalle, Cast } from '../../interfaces/interfaces';
+import { PeliculaDetalle } from '../../interfaces/interfaces';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detail',
@@ -10,8 +12,18 @@ import { PeliculaDetalle, Cast } from '../../interfaces/interfaces';
 export class DetailComponent implements OnInit {
   @Input() id:any;
   movie: PeliculaDetalle = {};
+  actores: Cast[] = [];
+  oculto =150;
 
-  constructor( private moviesService:MoviesService) { }
+  slideOptActores = {
+    slidesPerView: 3.1,
+    freeMode: true,
+    spacebetween: 0
+  };
+
+  constructor( private moviesService:MoviesService,
+               private modalCtrl: ModalController,
+    ) { }
 
   ngOnInit() {
 
@@ -23,9 +35,15 @@ export class DetailComponent implements OnInit {
     this.moviesService.getArtistMovie( this.id )
     .subscribe( resp => {
       console.log( resp );
-      this.movie = resp;
+      this.actores = resp.cast;
     });
   }
-  
+  regresar() {
+    this.modalCtrl.dismiss();
+  }
+  favorito() {
+    // const existe = this.dataLocal.guardarPelicula( this.pelicula );
+    // this.estrella = ( existe ) ? 'star' : 'star-outline';
+  }
 
 }
