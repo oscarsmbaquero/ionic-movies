@@ -55,6 +55,11 @@ export class MoviesService {
     return this.executeQuery<RespuestaMDB>(query)
   }
 
+  searchMovies( texto: string ) {
+    return this.executeQuery<RespuestaMDB>(`/search/movie?query=${ texto }`);
+
+  }
+
   getMoviedetail( id: string ) {
     return this.executeQuery<PeliculaDetalle>(`/movie/${ id }?a=1`);
   }

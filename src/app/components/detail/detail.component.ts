@@ -1,3 +1,4 @@
+import { DataLocalService } from './../../services/data-local.service';
 import { Cast } from './../../interfaces/interfaces';
 import { MoviesService } from './../../services/movies.service';
 import { Component, Input, OnInit } from '@angular/core';
@@ -14,6 +15,7 @@ export class DetailComponent implements OnInit {
   movie: PeliculaDetalle = {};
   actores: Cast[] = [];
   oculto =150;
+  estrella = 'star-outline';
 
   slideOptActores = {
     slidesPerView: 3.1,
@@ -23,6 +25,7 @@ export class DetailComponent implements OnInit {
 
   constructor( private moviesService:MoviesService,
                private modalCtrl: ModalController,
+               private dataLocal:DataLocalService,
     ) { }
 
   ngOnInit() {
@@ -42,8 +45,8 @@ export class DetailComponent implements OnInit {
     this.modalCtrl.dismiss();
   }
   favorito() {
-    // const existe = this.dataLocal.guardarPelicula( this.pelicula );
-    // this.estrella = ( existe ) ? 'star' : 'star-outline';
+      this.dataLocal.saveFilm( this.movie );
+     //this.estrella = ( existe ) ? 'star' : 'star-outline';
   }
 
 }
