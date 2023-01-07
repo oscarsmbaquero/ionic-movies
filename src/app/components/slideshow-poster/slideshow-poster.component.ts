@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Pelicula } from '../../interfaces/interfaces';
+import { Pelicula, PeliculaDetalle } from '../../interfaces/interfaces';
 import { ModalController } from '@ionic/angular';
 import { DetailComponent } from './../detail/detail.component';
 
@@ -11,16 +11,26 @@ import { DetailComponent } from './../detail/detail.component';
 export class SlideshowPosterComponent implements OnInit {
 
   @Input() movies: Pelicula[] = [];
+  @Input() films: PeliculaDetalle[] = [];
+  
+  
 
   slideOpts = {
     slidesPerView: 3.5,
     freeMode: true,
     spaceBetween:10,
   };
+  slideOpts2 = {
+    slidesPerView: 3.5,
+    freeMode: true,
+    spaceBetween:1,
+  };
 
   constructor(private modalController: ModalController) { }
 
   ngOnInit() {}
+  
+  
 
   async showDetail(id: number){
    

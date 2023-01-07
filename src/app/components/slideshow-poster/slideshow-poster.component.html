@@ -1,7 +1,15 @@
-<ion-slides [options] ="slideOpts">
+<ion-slides [options] ="slideOpts" *ngIf="movies">
   <ion-slide *ngFor="let movie of movies">
-     <ion-card (click)="showDetail(movie.id)">
+     <ion-card  mode="md" (click)="showDetail(movie.id)">
      <img class='poster' [src]="movie.poster_path | imagen"/>
+     </ion-card>
+  </ion-slide>
+</ion-slides>
+
+<ion-slides [options] ="slideOpts2">
+  <ion-slide *ngFor="let film of films">
+     <ion-card  mode="md" *ngIf="film.id" (click)="showDetail(film.id)">
+      <img *ngIf="film.poster_path" class='poster' [src]="film.poster_path | imagen"/>
      </ion-card>
   </ion-slide>
 </ion-slides>
